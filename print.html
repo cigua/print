@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>html打印</title>
+    <style type="text/css" media=print>
+        .noprint{display : none }
+    </style>
+    <script type="text/javascript">
+        function preview(oper)
+        {
+            if (oper < 10)
+            {
+                bdhtml=window.document.body.innerHTML;//获取当前页的html代码
+                sprnstr="<!--startprint"+oper+"-->";//设置打印开始区域
+                eprnstr="<!--endprint"+oper+"-->";//设置打印结束区域
+                prnhtml=bdhtml.substring(bdhtml.indexOf(sprnstr)+18); //从开始代码向后取html
+
+                prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr));//从结束代码向前取html
+                window.document.body.innerHTML=prnhtml;
+                window.print();
+                window.document.body.innerHTML=bdhtml;
+            } else {
+                window.print();
+            }
+        }
+
+    </script>
+
+</head>
+<body>
+<!--startprint1-->
+<table  width="100%" border="1" align="center" cellpadding="2" cellspacing="0" bordercolor="#CCCCCC" bgcolor="#FFFFFF"
+       style="border-collapse:collapse">
+    <tr>
+        <td width="40" height="40" align="center" bgcolor="#EAEAEA" class="font-12-hei">序</td>
+        <td width="90" height="40" align="center" bgcolor="#EAEAEA" class="font-12-hei">发送者/电话/地址</td>
+        <td width="160" height="40" align="center" bgcolor="#EAEAEA" class="font-12-hei">消息<br></td>
+        <td width="160" height="40" align="center" bgcolor="#EAEAEA" class="font-12-hei">回复内容</td>
+    </tr>
+    <tr onMouseOver="bgColor='#D6EBEB'" onMouseOut="bgColor='#FFFFFF'">
+    <td height="25" align="center" class="font-12-hei">1</td>
+    <td align="center" class="font-12-hei">2</td>
+    <td align="left"  class="font-12-hei">3</td>
+    <td align="center" class="font-12-hei">4</td>
+</tr>
+    <tr onMouseOver="bgColor='#D6EBEB'" onMouseOut="bgColor='#FFFFFF'">
+        <td height="25" align="center" class="font-12-hei">11</td>
+        <td align="center" class="font-12-hei">22</td>
+        <td align="left"  class="font-12-hei">33</td>
+        <td align="center" class="font-12-hei">44</td>
+    </tr>
+
+</table>
+<!--endprint1-->
+<table width="100%" class="noprint" border="1" align="center" cellpadding="2" cellspacing="0" bordercolor="#CCCCCC" bgcolor="#FFFFFF"
+       style="border-collapse:collapse">
+    <tr>
+        <td width="40" height="40" align="center" bgcolor="#EAEAEA" class="font-12-hei">序</td>
+        <td width="90" height="40" align="center" bgcolor="#EAEAEA" class="font-12-hei">发送者/电话/地址</td>
+        <td width="160" height="40" align="center" bgcolor="#EAEAEA" class="font-12-hei">消息<br></td>
+        <td width="160" height="40" align="center" bgcolor="#EAEAEA" class="font-12-hei">回复内容</td>
+    </tr>
+    <tr onMouseOver="bgColor='#D6EBEB'" onMouseOut="bgColor='#FFFFFF'">
+        <td height="25" align="center" class="font-12-hei">一</td>
+        <td align="center" class="font-12-hei">二</td>
+        <td align="left"  class="font-12-hei">三</td>
+        <td align="center" class="font-12-hei">四</td>
+    </tr>
+    <tr onMouseOver="bgColor='#D6EBEB'" onMouseOut="bgColor='#FFFFFF'">
+        <td height="25" align="center" class="font-12-hei">一一</td>
+        <td align="center" class="font-12-hei">二二</td>
+        <td align="left"  class="font-12-hei">三三</td>
+        <td align="center" class="font-12-hei">四四</td>
+    </tr>
+
+</table>
+<input id="btnPrint" type="button" value="打印预览" onclick=preview(1) />
+</body>
+</html>
